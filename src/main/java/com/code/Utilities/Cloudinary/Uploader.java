@@ -1,4 +1,4 @@
-package com.code.Model;
+package com.code.Utilities.Cloudinary;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;

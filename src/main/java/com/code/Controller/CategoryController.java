@@ -1,9 +1,7 @@
 package com.code.Controller;
 
 import com.code.Entity.Category;
-import com.code.Entity.Product;
-import com.code.Service.CategoryService;
-import com.code.Service.ProductService;
+import com.code.IService.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,18 +14,18 @@ import java.util.List;
 @RequestMapping("/category")
 public class CategoryController {
     @Autowired
-    private CategoryService categoryService;
+    private ICategoryService ICategoryService;
 
     @RequestMapping("/getAll")
     public List<Category> getAll(){
-        return categoryService.getAll();
+        return ICategoryService.getAll();
     }
 
     @PostMapping("/Save")
     public String getAll(@RequestParam("name") String name){
         Category category = new Category();
         category.setName(name);
-        categoryService.save(category);
+        ICategoryService.save(category);
         return "Success";
     }
 }

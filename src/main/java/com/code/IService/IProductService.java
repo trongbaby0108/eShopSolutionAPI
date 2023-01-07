@@ -1,10 +1,10 @@
-package com.code.Service;
+package com.code.IService;
 
 import com.code.Entity.Product;
 
 import java.util.List;
 
-public interface ProductService {
+public interface IProductService {
     public List<Product> getAll();
     public void save(Product product);
     public void disable(int id);

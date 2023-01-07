@@ -2,10 +2,10 @@ package com.code.Controller;
 
 import com.code.Entity.Product;
 import com.code.Entity.ProductImg;
-import com.code.Model.Uploader;
-import com.code.Service.CategoryService;
-import com.code.Service.ProductImgService;
-import com.code.Service.ProductService;
+import com.code.IService.IProductImgService;
+import com.code.IService.IProductService;
+import com.code.Utilities.Cloudinary.Uploader;
+import com.code.IService.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,13 +16,13 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    private ProductService ProductService ;
+    private IProductService ProductService ;
 
     @Autowired
-    private CategoryService CategoryService ;
+    private ICategoryService ICategoryService;
 
     @Autowired
-    private ProductImgService ProductImgService ;
+    private IProductImgService ProductImgService ;
 
     @RequestMapping("/getAll")
     public List<Product> getAll(){
@@ -43,7 +43,7 @@ public class ProductController {
     ){
         Product product = new Product();
         product.setEnable(true);
-        product.setCategory(CategoryService.findById(cateID));
+        product.setCategory(ICategoryService.findById(cateID));
         product.setName(name);
         product.setPrice(price);
         product.setDescription(description);
@@ -61,7 +61,7 @@ public class ProductController {
     ){
         Product product = ProductService.findById(id);
         product.setEnable(true);
-        product.setCategory(CategoryService.findById(cateID));
+        product.setCategory(ICategoryService.findById(cateID));
         product.setName(name);
         product.setPrice(price);
         product.setDescription(description);
